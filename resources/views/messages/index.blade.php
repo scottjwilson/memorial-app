@@ -3,11 +3,16 @@
 
 
 @section('content')
-	<h1>Messages</h1>
+	<h1 class="mb-4">Messages</h1>
 	
 	@foreach ($messages as $message)
-		<li>{{ $message->title }}</li>
-		<p>{{ $message->description }}</p>
+		<h3 class="mb-4">
+			<a href="messages/{{ $message->id }}">
+				{{ $message->title }}
+			</a>
+		</h3>
+
 	@endforeach
+	<button class="bg-red hover:bg-red-dark text-white font-bold py-2 px-4 rounded"><a class="text-white no-underline" href="/messages/create">New Message</a></button>
 
 @endsection

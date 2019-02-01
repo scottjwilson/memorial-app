@@ -20,35 +20,36 @@ class MessagesController extends Controller
 
     public function store()
     {
-    	$message = new Message();
-    	$message->title = request('title');
-    	$message->description = request('description');
+    	$validated = request()->validate([
+    		'title' => ['required', 'min:3'],
+    		'description' => ['required', 'min:5'],
+    	]);
 
-    	$message->save();
-
+    	Message::create($validated);
+   	
     	return redirect('/messages');
-
     }
 
-    public function show($id)
+    public function show(Message $message)
     {
-        return $id;
+        return view('messages.show', compact('message'));
     }
 
-    public function edit($id)
+    public function edit(Message $message)
     {
-
-    	$message = Message::find($id);
     	return view('messages.edit', compact('message'));
     }
 
-    public function update($id)
+    public function update(Message $message)
     {
-       	$message = Message::find($id);
-    	$message->title = request('title');
-    	$message->description = request('description');
+    	$message->update(request(['title','description']));
 
-    	$message->save();
+    	return redirect('/messages');
+    }
+
+    public function destroy(Message $message)
+    {
+    	$message->delete();
 
     	return redirect('/messages');
     }

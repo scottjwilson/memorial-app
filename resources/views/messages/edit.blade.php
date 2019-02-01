@@ -5,7 +5,7 @@
 		<div class="w-full xl:max-w-sm">
 			
 			<form method="POST" action="/messages/{{ $message->id }}" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-				{{ method_field('PATCH') }}
+				@method('PATCH')
 				@csrf
 				<div class="mb-4"> 
 					<label for="title" class="block text-grey-darker text-sm font-bold mb-2">Title</label>
@@ -20,13 +20,11 @@
     			<div class="mb-4">
     				<button class="bg-red hover:bg-red-dark text-white font-bold py-2 px-4 rounded">Update Message</button>
     			</div>
-
-
-
-
-				
-
-
+			</form>
+			<form method="POST" action="/messages/{{ $message->id }}">
+				@method('DELETE')
+				@csrf
+				<button type="submit" class="bg-red hover:bg-red-dark text-white font-bold py-2 px-4 rounded">Delete Message</button>
 			</form>
 		</div>
 @endsection
