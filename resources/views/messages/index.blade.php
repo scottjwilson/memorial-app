@@ -3,6 +3,8 @@
 
 
 @section('content')
+
+<div class="container mx-auto py-10">
 	<h1 class="mb-4">Messages</h1>
 	
 	@foreach ($messages as $message)
@@ -14,5 +16,6 @@
 
 	@endforeach
 	<button class="bg-red hover:bg-red-dark text-white font-bold py-2 px-4 rounded"><a class="text-white no-underline" href="/messages/create">New Message</a></button>
+</div>
 
 @endsection

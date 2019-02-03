@@ -10,6 +10,9 @@
  * @import "tailwindcss/preflight";
  */
 @tailwind preflight;
+.hero {
+	background-image: url(https://i.imgur.com/Oqi9Wis.jpg);
+}
 
 /**
  * This injects any component classes registered by plugins.
